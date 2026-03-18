@@ -1,0 +1,21 @@
+{
+  "model": "baseline_cnn",
+  "epochs": 5,
+  "batch_size": 32,
+  "val_loss": 0.545502245426178,
+  "val_accuracy": 0.8125712275505066,
+  "class_to_index": {
+    "Ec": 0,
+    "Ei": 1,
+    "Er": 2,
+    "Sc?t": 3,
+    "Ser": 4
+  },
+  "index_to_class": {
+    "0": "Ec",
+    "1": "Ei",
+    "2": "Er",
+    "3": "Sc?t",
+    "4": "Ser"
+  }
+}

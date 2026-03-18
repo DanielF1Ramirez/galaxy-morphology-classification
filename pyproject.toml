@@ -12,7 +12,20 @@ authors = [
   { name = "Daniel", email = "proyectostech3@gmail.com" }
 ]
 license = { text = "MIT" }
-dependencies = []
+dependencies = [
+  "fastapi",
+  "kagglehub",
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "pillow",
+  "pydantic",
+  "python-multipart",
+  "requests",
+  "scikit-learn",
+  "tensorflow",
+  "uvicorn",
+]
 
 [tool.setuptools]
 include-package-data = true

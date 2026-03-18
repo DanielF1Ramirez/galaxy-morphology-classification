@@ -8,5 +8,15 @@ dependencies:
   - pandas
   - matplotlib
   - scikit-learn
+  - requests
+  - pillow
   - jupyter
   - notebook
+  - pip:
+      - fastapi
+      - kagglehub
+      - pydantic
+      - pytest
+      - python-multipart
+      - tensorflow
+      - uvicorn
