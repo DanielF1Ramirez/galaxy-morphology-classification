@@ -27,5 +27,12 @@ dependencies = [
   "uvicorn",
 ]
 
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "jupyter",
+  "notebook",
+]
+
 [tool.setuptools]
 include-package-data = true

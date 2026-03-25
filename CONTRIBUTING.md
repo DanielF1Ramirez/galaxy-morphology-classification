@@ -16,6 +16,12 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
+Alternative (editable package install with declared dev extras):
+
+```bash
+pip install -e ".[dev]"
+```
+
 ## Quality Checks
 
 Run before submitting changes:
