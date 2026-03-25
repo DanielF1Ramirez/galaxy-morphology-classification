@@ -1,32 +1,69 @@
 # Galaxy Morphology Classification
 
-A professional machine learning and deep learning project for galaxy morphology classification, integrating business understanding, exploratory data analysis, baseline modeling, transfer learning, and reproducible project structure.
-
-## Project Status
-Project bootstrap in progress.
+A deep learning project for galaxy morphology classification using Galaxy Zoo 2 image data. This repository consolidates work from the original Deep Learning and Software Development phases into a clean, reproducible, and portfolio-ready machine learning repository.
 
 ## Overview
-This repository consolidates and professionalizes prior work developed across the Deep Learning and Software Development methodology phases. The main objective is to build a clean, reproducible, and well-documented repository for galaxy morphology classification.
 
-## Main Goals
-- Organize the project using a production-oriented repository structure.
-- Preserve the analytical and experimental value of notebooks.
-- Move reusable logic into maintainable source modules.
-- Document data, methodology, results, and future work.
-- Prepare the repository for reproducibility, collaboration, and portfolio presentation.
+The goal of this project is to classify galaxy morphology from astronomical images by building a structured workflow that covers:
 
-## Planned Repository Structure
-- `docs/`: Project documentation.
-- `data/`: Small samples and data access instructions.
-- `notebooks/`: Research and analysis notebooks.
-- `src/`: Reusable source code for data, modeling, training, and inference.
-- `scripts/`: Entry-point scripts for reproducible execution.
-- `reports/`: Figures, metrics, and final report artifacts.
-- `tests/`: Automated tests.
-- `.github/`: CI workflows and repository templates.
+- data acquisition
+- data preparation
+- exploratory data analysis
+- baseline convolutional neural networks
+- transfer learning with EfficientNetB0
+- model evaluation
+- inference through a FastAPI service
 
-## Reproducibility
-The repository will include environment definitions, dependency management, and executable scripts to ensure reproducibility.
+This repository was reorganized to transform previous academic project phases into a professional software-oriented machine learning project.
 
-## License
-This project is released under the MIT License.
+## Problem Statement
+
+Galaxy morphology classification is a relevant task in astronomy because galaxy shape is strongly related to physical structure and evolutionary history. Manual labeling is expensive and time-consuming, so image classification models can support scalable morphological categorization.
+
+This project uses Galaxy Zoo 2 related resources to build a supervised classification pipeline for the most frequent morphology classes.
+
+## Main Objectives
+
+- Build a reproducible machine learning workflow for galaxy morphology classification.
+- Consolidate exploratory and modeling work into a professional repository structure.
+- Compare a baseline CNN against a transfer learning architecture.
+- Preserve the analytical value of the original notebooks while moving reusable logic into source modules.
+- Expose trained models through a lightweight inference API.
+
+## Repository Structure
+
+```text
+galaxy-morphology-classification/
+├─ .github/
+│  └─ workflows/
+├─ data/
+│  ├─ sample/
+│  └─ README.md
+├─ docs/
+│  ├─ acceptance/
+│  ├─ business_understanding/
+│  ├─ data/
+│  ├─ deployment/
+│  └─ modeling/
+├─ notebooks/
+│  ├─ experiments/
+│  └─ README.md
+├─ reports/
+│  ├─ figures/
+│  ├─ metrics/
+│  └─ README.md
+├─ scripts/
+│  ├─ data_acquisition/
+│  ├─ eda/
+│  ├─ evaluation/
+│  ├─ preprocessing/
+│  └─ training/
+├─ src/
+│  └─ galaxy_morphology_classification/
+├─ tests/
+├─ .gitignore
+├─ LICENSE
+├─ environment.yml
+├─ pyproject.toml
+├─ README.md
+└─ requirements.txt
