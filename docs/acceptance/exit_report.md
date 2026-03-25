@@ -1,32 +1,34 @@
-# Informe de salida
+﻿# Exit Report
 
-## Resumen Ejecutivo
+## Executive Summary
 
-Este informe describe los resultados del proyecto de machine learning y presenta los principales logros y lecciones aprendidas durante el proceso.
+The repository has been consolidated into a professional structure with reproducible scripts, modular source code, lightweight reporting artifacts, automated tests, and CI scaffolding.
 
-## Resultados del proyecto
+## Completed Deliverables
 
-- Resumen de los entregables y logros alcanzados en cada etapa del proyecto.
-- Evaluación del modelo final y comparación con el modelo base.
-- Descripción de los resultados y su relevancia para el negocio.
+- Data acquisition pipeline for Galaxy Zoo 2 + Hart labels
+- Preprocessing entrypoint for deterministic tabular sanitation
+- EDA workflow and class distribution artifact generation
+- Baseline CNN and EfficientNetB0 model builders
+- Training entrypoint with metrics export
+- FastAPI inference service
+- Core technical documentation (`README`, modeling, deployment, project overview)
+- Test suite and GitHub Actions test workflow
 
-## Lecciones aprendidas
+## Validation Performed
 
-- Identificación de los principales desafíos y obstáculos encontrados durante el proyecto.
-- Lecciones aprendidas en relación al manejo de los datos, el modelamiento y la implementación del modelo.
-- Recomendaciones para futuros proyectos de machine learning.
+- Fast local tests via `pytest`
+- CLI smoke checks for preprocessing and script usability
+- Documentation alignment with actual script/module paths
 
-## Impacto del proyecto
+## Residual Risks
 
-- Descripción del impacto del modelo en el negocio o en la industria.
-- Identificación de las áreas de mejora y oportunidades de desarrollo futuras.
+- EfficientNet metrics are not yet committed as a reproducible artifact.
+- API startup currently depends on the presence of local model artifacts.
+- Full training-quality benchmarking is intentionally out of scope for fast local validation.
 
-## Conclusiones
+## Recommended Next Operational Actions
 
-- Resumen de los resultados y principales logros del proyecto.
-- Conclusiones finales y recomendaciones para futuros proyectos.
-
-## Agradecimientos
-
-- Agradecimientos al equipo de trabajo y a los colaboradores que hicieron posible este proyecto.
-- Agradecimientos especiales a los patrocinadores y financiadores del proyecto.
+1. Run an EfficientNet smoke training (`--epochs 1`) and commit metrics if desired.
+2. Add a confusion matrix + classification report artifact.
+3. Keep future changes gated by tests and CI.
