@@ -1,69 +1,127 @@
-# Galaxy Morphology Classification
+﻿# Galaxy Morphology Classification
 
-A deep learning project for galaxy morphology classification using Galaxy Zoo 2 image data. This repository consolidates work from the original Deep Learning and Software Development phases into a clean, reproducible, and portfolio-ready machine learning repository.
+A professional machine learning repository for galaxy morphology classification using Galaxy Zoo 2 images and Hart (2016) labels.
 
 ## Overview
 
-The goal of this project is to classify galaxy morphology from astronomical images by building a structured workflow that covers:
+This project consolidates prior academic work into a reproducible, software-oriented workflow:
 
 - data acquisition
-- data preparation
+- tabular preprocessing
 - exploratory data analysis
-- baseline convolutional neural networks
+- baseline CNN training
 - transfer learning with EfficientNetB0
-- model evaluation
+- reusable evaluation utilities
 - inference through a FastAPI service
-
-This repository was reorganized to transform previous academic project phases into a professional software-oriented machine learning project.
-
-## Problem Statement
-
-Galaxy morphology classification is a relevant task in astronomy because galaxy shape is strongly related to physical structure and evolutionary history. Manual labeling is expensive and time-consuming, so image classification models can support scalable morphological categorization.
-
-This project uses Galaxy Zoo 2 related resources to build a supervised classification pipeline for the most frequent morphology classes.
-
-## Main Objectives
-
-- Build a reproducible machine learning workflow for galaxy morphology classification.
-- Consolidate exploratory and modeling work into a professional repository structure.
-- Compare a baseline CNN against a transfer learning architecture.
-- Preserve the analytical value of the original notebooks while moving reusable logic into source modules.
-- Expose trained models through a lightweight inference API.
 
 ## Repository Structure
 
 ```text
 galaxy-morphology-classification/
-├─ .github/
-│  └─ workflows/
-├─ data/
-│  ├─ sample/
-│  └─ README.md
-├─ docs/
-│  ├─ acceptance/
-│  ├─ business_understanding/
-│  ├─ data/
-│  ├─ deployment/
-│  └─ modeling/
-├─ notebooks/
-│  ├─ experiments/
-│  └─ README.md
-├─ reports/
-│  ├─ figures/
-│  ├─ metrics/
-│  └─ README.md
-├─ scripts/
-│  ├─ data_acquisition/
-│  ├─ eda/
-│  ├─ evaluation/
-│  ├─ preprocessing/
-│  └─ training/
-├─ src/
-│  └─ galaxy_morphology_classification/
-├─ tests/
-├─ .gitignore
-├─ LICENSE
-├─ environment.yml
-├─ pyproject.toml
-├─ README.md
-└─ requirements.txt
+|- .github/
+|  |- workflows/
+|- data/
+|  |- raw/              # local-only, ignored
+|  |- interim/          # local-only, ignored
+|  |- README.md
+|- docs/
+|  |- acceptance/
+|  |- business_understanding/
+|  |- data/
+|  |- deployment/
+|  |- modeling/
+|- notebooks/
+|  |- README.md
+|- reports/
+|  |- metrics/
+|  |- README.md
+|- scripts/
+|  |- data_acquisition/
+|  |- preprocessing/
+|  |- eda/
+|  |- training/
+|  |- evaluation/
+|- src/
+|  |- galaxy_morphology_classification/
+|- tests/
+|- .gitignore
+|- AGENTS.md
+|- environment.yml
+|- LICENSE
+|- pyproject.toml
+|- README.md
+|- requirements.txt
+```
+
+## Environment Setup
+
+### Option A: pip + virtual environment
+
+```bash
+python -m venv .venv
+.venv\\Scripts\\activate
+pip install -r requirements.txt
+```
+
+### Option B: conda
+
+```bash
+conda env create -f environment.yml
+conda activate galaxy-morphology-classification
+```
+
+## Quickstart Pipeline
+
+Run from the repository root.
+
+### 1) Data acquisition
+
+```bash
+python scripts/data_acquisition/main.py
+```
+
+### 2) Preprocessing
+
+```bash
+python scripts/preprocessing/main.py
+```
+
+### 3) EDA
+
+```bash
+python scripts/eda/main.py
+```
+
+### 4) Training (fast smoke run)
+
+```bash
+python scripts/training/main.py --model baseline --epochs 1
+```
+
+### 5) API inference service
+
+```bash
+uvicorn scripts.evaluation.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Open:
+- `http://127.0.0.1:8000`
+- `http://127.0.0.1:8000/docs`
+
+## Testing
+
+```bash
+python -m pytest -q
+```
+
+CI is configured in `.github/workflows/tests.yml`.
+
+## Artifacts
+
+- Trained models: `models/*.keras` (local, not committed by default).
+- Training metrics: `reports/metrics/*.json`.
+- EDA figure: `docs/data/figures/class_distribution.png`.
+
+## License
+
+MIT (see `LICENSE`).
