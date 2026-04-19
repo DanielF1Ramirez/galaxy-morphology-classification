@@ -35,11 +35,11 @@ Thumbs.db
 *.log
 
 # Data and models
-data/raw/
-data/interim/
-data/processed/
-models/
-checkpoints/
+/data/raw/
+/data/interim/
+/data/processed/
+/models/
+/checkpoints/
 
 # ML artifacts
 *.h5
