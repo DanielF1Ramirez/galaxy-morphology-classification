@@ -1,4 +1,4 @@
-﻿# Contributing Guide
+# Contributing Guide
 
 Thanks for contributing to `galaxy-morphology-classification`.
 
@@ -12,43 +12,46 @@ Thanks for contributing to `galaxy-morphology-classification`.
 
 ```bash
 python -m venv .venv
-.venv\\Scripts\\activate
-pip install -r requirements.txt
-```
-
-Alternative (editable package install with declared dev extras):
-
-```bash
+.venv\Scripts\activate
 pip install -e ".[dev]"
 ```
 
-## Quality Checks
+Alternative:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Required Checks
 
 Run before submitting changes:
 
 ```bash
-python -m pytest -q
+ruff check .
+pytest -q
 ```
 
-For workflow sanity checks, prefer fast commands and smoke runs.
+When touching training or evaluation flows, also run the smallest realistic smoke commands you can justify.
+
+## Data and Model Policy
+
+- Do not commit heavy raw datasets, split CSVs, or local model binaries by default.
+- Keep generated artifacts in `data/raw/`, `data/interim/`, `data/processed/`, and `models/` local unless the task explicitly requires something lighter to be versioned.
+- Use the deterministic split protocol already implemented by `scripts/preprocessing/main.py`.
 
 ## Coding Guidelines
 
 - Keep comments and docstrings in English.
-- Avoid large, speculative refactors.
+- Avoid speculative refactors.
 - Do not edit notebooks unless required for the task.
 - Update documentation when behavior changes.
-- Avoid unnecessary dependencies.
+- Prefer reproducible, testable utilities under `src/`.
 
 ## Commit and PR Guidance
 
 - Use concise English commit messages.
 - Keep commits logically scoped.
 - Include validation details in PR descriptions:
-  - what was changed
+  - what changed
   - what was validated
   - what remains unverified
-
-## Data and Artifacts
-
-Do not commit heavy raw datasets or large model artifacts. Keep tracked outputs lightweight and reproducible.

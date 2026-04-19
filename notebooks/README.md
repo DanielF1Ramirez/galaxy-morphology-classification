@@ -12,11 +12,9 @@ Notebooks are used to document exploratory work, business understanding, data an
 - Final repository execution should not depend exclusively on notebooks.
 
 ## Expected contents
-This repository will later integrate notebooks from the Deep Learning project to preserve:
-- business understanding
-- exploratory data analysis
-- integrated training pipeline exploration
-- transition from baseline CNN to transfer learning
+Only keep notebooks that add traceability or explain experiments that are not already reproducible through `scripts/` and `src/`.
+
+The current delivery does not depend on notebooks to run the end-to-end pipeline.
 
 ## Good practice
 A notebook should explain analysis and experimentation, while maintainable and reusable logic should live in source modules and scripts.
