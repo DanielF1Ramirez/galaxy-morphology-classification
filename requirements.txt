@@ -1,5 +1,5 @@
 fastapi
-httpx
+httpx<0.28
 jupyter
 kagglehub
 matplotlib

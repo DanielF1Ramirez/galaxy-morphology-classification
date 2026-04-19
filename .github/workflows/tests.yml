@@ -25,7 +25,7 @@ jobs:
       - name: Install test dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest pandas matplotlib requests kagglehub scikit-learn fastapi pydantic pillow python-multipart httpx ruff
+          pip install pytest pandas matplotlib requests kagglehub scikit-learn fastapi pydantic pillow python-multipart "httpx<0.28" ruff
 
       - name: Run lint checks
         run: ruff check .

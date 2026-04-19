@@ -14,7 +14,7 @@ dependencies:
   - notebook
   - pip:
       - fastapi
-      - httpx
+      - httpx<0.28
       - kagglehub
       - pydantic
       - pytest

@@ -29,7 +29,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-  "httpx",
+  "httpx<0.28",
   "pytest",
   "ruff",
   "jupyter",
