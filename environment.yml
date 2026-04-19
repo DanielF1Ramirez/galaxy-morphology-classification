@@ -14,9 +14,11 @@ dependencies:
   - notebook
   - pip:
       - fastapi
+      - httpx
       - kagglehub
       - pydantic
       - pytest
       - python-multipart
+      - ruff
       - tensorflow
       - uvicorn

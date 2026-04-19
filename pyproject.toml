@@ -29,10 +29,24 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+  "httpx",
   "pytest",
+  "ruff",
   "jupyter",
   "notebook",
 ]
 
 [tool.setuptools]
 include-package-data = true
+
+[tool.ruff]
+line-length = 100
+extend-exclude = [
+  ".venv",
+]
+
+[tool.ruff.lint]
+ignore = [
+  "E402",
+  "E501",
+]

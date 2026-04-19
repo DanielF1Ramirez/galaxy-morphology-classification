@@ -1,4 +1,5 @@
 fastapi
+httpx
 jupyter
 kagglehub
 matplotlib
@@ -10,6 +11,7 @@ pydantic
 pytest
 python-multipart
 requests
+ruff
 scikit-learn
 tensorflow
 uvicorn

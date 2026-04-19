@@ -134,7 +134,12 @@ def main() -> None:
     configure_logging()
 
     project_root = get_project_root()
-    dataset_path = project_root / "data" / "interim" / "merged_filtered.csv"
+    processed_dataset_path = project_root / "data" / "processed" / "merged_filtered_clean.csv"
+    dataset_path = (
+        processed_dataset_path
+        if processed_dataset_path.exists()
+        else project_root / "data" / "interim" / "merged_filtered.csv"
+    )
     output_figure_path = project_root / "docs" / "data" / "figures" / "class_distribution.png"
 
     dataframe = load_filtered_dataset(dataset_path)
