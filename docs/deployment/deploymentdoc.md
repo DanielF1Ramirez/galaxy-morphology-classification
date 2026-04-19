@@ -1,4 +1,4 @@
-﻿# Deployment Guide
+# Deployment Guide
 
 ## Scope
 
@@ -8,22 +8,23 @@ This document describes how to run the FastAPI inference service defined in `scr
 
 - Python 3.11+
 - Installed dependencies from `requirements.txt` or `environment.yml`
-- At least one trained model file in `models/`
-- Matching metrics JSON file in `reports/metrics/`
+- A trained `.keras` model inside `models/`
+- Matching metrics JSON in `reports/metrics/`
 
 ## Model and Metrics Contract
 
-The API expects one of these model artifacts:
+The API expects:
 
-- `models/efficientnet_b0.keras` (preferred if present)
-- `models/baseline_cnn.keras` (fallback)
+- `models/<model_name>.keras`
+- `reports/metrics/<model_name>_metrics.json`
 
-And the corresponding metrics file:
+The metrics file must include:
 
-- `reports/metrics/efficientnet_b0_metrics.json`
-- `reports/metrics/baseline_cnn_metrics.json`
+- `index_to_class`
+- `input_scaling`
+- optionally `is_selected_model`
 
-The metrics file must include `index_to_class` for decoding predictions.
+If multiple models exist, the API chooses the one flagged as `is_selected_model`. If no model is flagged, it falls back to EfficientNetB0 and then to the baseline CNN when corresponding artifacts exist.
 
 ## Run Locally
 
@@ -42,7 +43,12 @@ Access:
 
 ### `GET /`
 
-Health and model metadata endpoint.
+Returns:
+
+- runtime status
+- active model name
+- active model path
+- active metrics path
 
 ### `POST /predict`
 
@@ -50,9 +56,9 @@ Accepts a multipart file upload (`image/jpeg`, `image/jpg`, or `image/png`) and 
 
 - `predicted_class`
 - `predicted_index`
-- `probabilities` (class-to-probability mapping)
+- `probabilities`
 
-Example using curl:
+Example using `curl`:
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/predict" \
@@ -63,6 +69,7 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 
 ## Operational Notes
 
-- The current service loads the model at import/startup time.
-- If no valid model/metrics pair exists, API startup fails by design.
-- For production usage, place the API behind HTTPS and add authentication, request size limits, and rate limiting.
+- The API now loads the selected runtime lazily and caches it after startup.
+- Image preprocessing respects the `input_scaling` stored in the selected metrics payload.
+- If no valid model/metrics pair exists, startup fails with an actionable error.
+- For production usage, place the API behind HTTPS and add authentication, request-size limits, and rate limiting.

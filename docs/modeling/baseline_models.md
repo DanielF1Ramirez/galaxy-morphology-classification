@@ -30,7 +30,9 @@ Default configuration:
 - Learning rate: `1e-3`
 - Loss: `sparse_categorical_crossentropy`
 - Batch size: `32`
-- Validation split: `0.2`
+- Validation split: `0.15`
+- Test split: `0.15`
+- Selection metric: `macro_f1`
 
 ## Current Baseline Result
 
@@ -46,6 +48,6 @@ The baseline model provides a stable reference point for subsequent transfer lea
 
 ## Limitations
 
-- No committed confusion matrix artifact yet.
-- No committed per-class precision/recall summary yet.
-- EfficientNet comparison requires committed EfficientNet metrics.
+- The baseline is the reference model, not necessarily the final delivery model.
+- Offline evaluation artifacts depend on running `scripts/evaluation/offline.py`.
+- EfficientNet comparison requires a local transfer-learning run under the same split protocol.
